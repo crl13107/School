@@ -1,4 +1,4 @@
-package ttt;
+package chapter2;
 
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -14,10 +14,6 @@ public class Sprite {
 	private int curr = 0;
 	private Image image;
 
-	public Sprite(String resid) {
-		this(resid, 1);
-	}
-
 	public Sprite(String resid, int frames) {
 		frameCount = frames;
 
@@ -28,7 +24,7 @@ public class Sprite {
 			}
 			image = ImageIO.read(url);
 		} catch (IOException e) {
-			System.err.println("failed to load sprite!");
+			System.err.println("faaled to load sprite!");
 		}
 		src = new int[frameCount];
 
@@ -36,10 +32,6 @@ public class Sprite {
 			int w = image.getWidth(null) / frameCount;
 			src[i] = i * w;
 		}
-	}
-
-	public void drawImage(Graphics2D gc, int rx, int ry, int width, int height) {
-		gc.drawImage(image, rx, ry, rx + width, ry + height, 0, 0, image.getWidth(null), image.getHeight(null), null);
 	}
 
 	public void drawImage(Graphics2D gc, int rx, int ry, int width, int height, boolean active) {
